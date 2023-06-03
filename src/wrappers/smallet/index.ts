@@ -52,6 +52,8 @@ export class SmalletWrapper {
     return this._data;
   }
 
+  /***Proposes a new transaction */
+  
   async newTransaction({
     proposer = this.provider.wallet.publicKey,
     payer = this.provider.wallet.publicKey,
@@ -93,7 +95,8 @@ export class SmalletWrapper {
       index,
     };
   }
-
+  /**Creates a new transaction from an envelope */
+  
   async newTransactionFromEnvelope({
     tx,
     ...args
@@ -131,7 +134,8 @@ export class SmalletWrapper {
       }),
     ]);
   }
-
+  /**Executes a transaction as the new smallet */
+  
   async executeTransaction({
     transactionKey,
     owner = this.provider.wallet.publicKey,
@@ -144,10 +148,13 @@ export class SmalletWrapper {
     );
     return new TransactionEnvelope(this.provider, [ix]);
   }
-
+  /**Finds the derived wallet address and bump of a given index */
+  
   async findWalletDerivedAddress(index: number): Promise<[PublicKey, number]> {
     return await findWalletDerivedAddress(this.key, index);
   }
+
+  /**Finds the owner invoker address and bump of a given index */
 
   async findOwnerInvokerAddress(index: number): Promise<[PublicKey, number]> {
     return await findOwnerInvokerAddress(this.key, index);
@@ -191,7 +198,8 @@ export class SmalletWrapper {
       ]),
     };
   }
-
+  /**Executes a transaction using a wallet-derived address */
+  
   async executeTransactionDerived({
     transactionKey,
     walletIndex,
@@ -214,7 +222,8 @@ export class SmalletWrapper {
     );
     return new TransactionEnvelope(this.provider, [ix]);
   }
-
+  /**Executes a transaction using an owner invoker address */
+  
   async ownerInvokeInstruction({
     instruction,
     index,
@@ -256,7 +265,8 @@ export class SmalletWrapper {
     );
     return new TransactionEnvelope(this.provider, [ix]);
   }
-
+  /**Executes a transaction using an owner invoker address */
+  
   async ownerInvokeInstructionV2({
     instruction,
     index,
@@ -317,7 +327,8 @@ export class SmalletWrapper {
     });
     return new TransactionEnvelope(this.provider, [ix]);
   }
-
+  /**Loads a smallet */
+  
   static async load(sdk: CosmicSDK, key: PublicKey): Promise<SmalletWrapper> {
     const data = await sdk.programs.Smallet.account.smallet.fetch(key);
     return new SmalletWrapper(sdk, {
