@@ -1,5 +1,7 @@
+//! Instruction handler for [smallet::unapprove].
 use crate::*;
 
+/// Instruction handler for [smallet::unapprove].
 pub fn handler(ctx: Context<Approve>) -> Result<()> {
     let owner_index = ctx
         .accounts

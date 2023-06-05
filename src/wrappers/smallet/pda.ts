@@ -30,9 +30,6 @@ export const findTransactionAddress = async (
 
 /**
  * Finds a derived address of a Smart Wallet.
- * @param Smallet
- * @param index
- * @returns
  */
 export const findWalletDerivedAddress = async (
   smallet: PublicKey,
@@ -50,9 +47,6 @@ export const findWalletDerivedAddress = async (
 
 /**
  * Finds an Owner Invoker address of a Smart Wallet.
- * @param Smallet
- * @param index
- * @returns
  */
 export const findOwnerInvokerAddress = async (
   smallet: PublicKey,
@@ -70,9 +64,6 @@ export const findOwnerInvokerAddress = async (
 
 /**
  * Finds the subaccount info address of a subaccount of a smart wallet.
- * @param Smallet
- * @param index
- * @returns
  */
 export const findSubaccountInfoAddress = async (
   subaccount: PublicKey
@@ -106,9 +97,6 @@ export const getTransactionAddress = (
 
 /**
  * Finds a derived address of a Smart Wallet.
- * @param Smallet
- * @param index
- * @returns
  */
 export const getWalletDerivedAddress = (
   smallet: PublicKey,
@@ -126,9 +114,6 @@ export const getWalletDerivedAddress = (
 
 /**
  * Finds an Owner Invoker address of a Smart Wallet.
- * @param Smallet
- * @param index
- * @returns
  */
 export const getOwnerInvokerAddress = (
   smallet: PublicKey,
@@ -146,9 +131,6 @@ export const getOwnerInvokerAddress = (
 
 /**
  * Finds the subaccount info address of a subaccount of a smart wallet.
- * @param Smallet
- * @param index
- * @returns
  */
 export const getSubaccountInfoAddress = (subaccount: PublicKey): PublicKey => {
   return getProgramAddress(

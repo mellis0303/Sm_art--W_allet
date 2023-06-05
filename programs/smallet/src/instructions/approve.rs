@@ -36,11 +36,14 @@ impl<'info> Validate<'info> for Approve<'info> {
         Ok(())
     }
 }
-
+/// Accounts for [smallet::approve].
 #[derive(Accounts)]
 pub struct Approve<'info> {
+	/// The [Smallet].
     pub smallet: Account<'info, Smallet>,
+    /// The [Transaction].
     #[account(mut, has_one = smallet)]
     pub transaction: Account<'info, Transaction>,
+    /// One of the smallet owners. Checked in the handler.
     pub owner: Signer<'info>,
 }

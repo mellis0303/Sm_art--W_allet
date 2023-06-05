@@ -21,12 +21,15 @@ import {
   SmalletWrapper,
 } from "./wrappers/smallet";
 
+/** Cosmic SDK */
 export class CosmicSDK {
   constructor(
     readonly provider: AugmentedProvider,
     readonly programs: Programs
   ) {}
-
+  /**
+   * Creates a new instance of the SDK with the given keypair.
+   */
   withSigner(signer: Signer): CosmicSDK {
     return CosmicSDK.load({
       provider: this.provider.withSigner(signer),
@@ -88,6 +91,9 @@ export class CosmicSDK {
     threshold: BN;
     numOwners: number;
     base?: Signer;
+    /**
+     * Timelock delay in seconds
+     */
     delay?: BN;
   }): Promise<PendingSmallet> {
     const [smallet, bump] = await findSmallet(base.publicKey);
@@ -123,6 +129,7 @@ export class CosmicSDK {
     addresses = COSMIC_ADDRESSES,
   }: {
     provider: Provider;
+    // Addresses of each program.
     addresses?: { [K in keyof Programs]?: PublicKey };
   }): CosmicSDK {
     const allAddresses = { ...COSMIC_ADDRESSES, ...addresses };
