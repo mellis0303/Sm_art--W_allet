@@ -40,7 +40,6 @@ export class CosmicSDK {
 
   /**
    * Creates a subaccount info.
-   * @returns
    */
   async createSubaccountInfo({
     smallet,
