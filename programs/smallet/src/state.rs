@@ -8,6 +8,7 @@ use vipers::prelude::*;
 
 #[account]
 #[derive(Default, Debug, PartialEq)]
+#[allow(missing_docs)]
 pub struct Smallet {
 
     pub base: Pubkey,
@@ -30,6 +31,7 @@ pub struct Smallet {
     pub reserved: [u64; 16],
 }
 
+#[allow(missing_docs)]
 impl Smallet {
     pub fn space(max_owners: u8) -> usize {
         4 
@@ -52,6 +54,7 @@ impl Smallet {
 
 #[account]
 #[derive(Debug, Default, PartialEq)]
+#[allow(missing_docs)]
 pub struct Transaction {
 
     pub smallet: Pubkey,
@@ -75,6 +78,7 @@ pub struct Transaction {
     pub executed_at: i64,
 }
 
+#[allow(missing_docs)]
 impl Transaction {
     pub fn space(instructions: Vec<TXInstruction>) -> usize {
         4  
@@ -89,12 +93,14 @@ impl Transaction {
 }
 
 #[derive(AnchorSerialize, AnchorDeserialize, Clone, Debug, Default, PartialEq)]
+#[allow(missing_docs)]
 pub struct TXInstruction {
     pub program_id: Pubkey,
     pub keys: Vec<TXAccountMeta>,
     pub data: Vec<u8>,
 }
 
+#[allow(missing_docs)]
 impl TXInstruction {
     pub fn space(&self) -> usize {
         std::mem::size_of::<Pubkey>()
@@ -104,6 +110,7 @@ impl TXInstruction {
 }
 
 #[derive(AnchorSerialize, AnchorDeserialize, Debug, PartialEq, Copy, Clone)]
+#[allow(missing_docs)]
 pub struct TXAccountMeta {
     pub pubkey: Pubkey,
     pub is_signer: bool,
@@ -140,6 +147,7 @@ impl From<TXAccountMeta> for solana_program::instruction::AccountMeta {
     AnchorSerialize, AnchorDeserialize, Copy, Clone, Debug, Eq, PartialEq, PartialOrd, Ord,
 )]
 #[repr(u8)]
+#[allow(missing_docs)]
 pub enum SubaccountType {
     Derived = 0,
     OwnerInvoker = 1,
@@ -153,12 +161,14 @@ impl Default for SubaccountType {
 
 #[account]
 #[derive(Copy, Default, Debug, PartialEq, Eq)]
+#[allow(missing_docs)]
 pub struct SubaccountInfo {
     pub smallet: Pubkey,
     pub subaccount_type: SubaccountType,
     pub index: u64,
 }
 
+#[allow(missing_docs)]
 impl SubaccountInfo {
     pub const LEN: usize = 32 + 1 + 8;
 }

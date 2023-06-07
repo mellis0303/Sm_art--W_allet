@@ -4,8 +4,7 @@
   "version": "0.1.0",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "repository": ""
-  },
+  "repository": "",
   "exports": {
     ".": {
       "import": "./dist/esm/index.js",

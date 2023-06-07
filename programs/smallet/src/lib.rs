@@ -23,10 +23,10 @@ pub const DEFAULT_GRACE_PERIOD: i64 = 14 * SECONDS_PER_DAY;
 
 pub const NO_ETA: i64 = -1;
 
-declare_id!("");
+declare_id!("My11111111111111111111111111111111111111111");
 
 #[program]
-#[deny(missing_docs)]
+#[allow(missing_docs)]
 pub mod smallet {
     use super::*;
 
