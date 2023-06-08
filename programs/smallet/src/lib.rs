@@ -46,7 +46,7 @@ pub const DEFAULT_GRACE_PERIOD: i64 = 14 * SECONDS_PER_DAY;
 /// Constant declaring that there is no ETA of the transaction
 pub const NO_ETA: i64 = -1;
 
-declare_id!("");
+declare_id!("My11111111111111111111111111111111111111111");
 
 #[program]
 #[deny(missing_docs)]
@@ -168,7 +168,7 @@ pub mod smallet {
             invariant!(delay <= MAX_DELAY_SECONDS, DelayTooHigh);
         }
 
-		/// generate the signers boolean list
+		// generate the signers boolean list
         let owners = &smallet.owners;
         let mut signers = Vec::new();
         signers.resize(owners.len(), false);
@@ -178,7 +178,7 @@ pub mod smallet {
         let smallet = &mut ctx.accounts.smallet;
         smallet.num_transactions = unwrap_int!(smallet.num_transactions.checked_add(1));
 
-		/// init the TX
+		// init the TX
         let tx = &mut ctx.accounts.transaction;
         tx.smallet = smallet.key();
         tx.index = index;

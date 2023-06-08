@@ -22,15 +22,15 @@ pub fn handler(ctx: Context<Approve>) -> Result<()> {
 
 impl<'info> Validate<'info> for Approve<'info> {
     fn validate(&self) -> Result<()> {
-        /// The TX in question should belong to the smallet
+        // The TX in question should belong to the smallet
         assert_keys_eq!(self.smallet, self.transaction.smallet);
-        /// If the owner set has changed, should not allow approvals/unapprovals to change
-        /// This can potentially cause someone to be able to approve/unapprove someone else's TXs.
+        // If the owner set has changed, should not allow approvals/unapprovals to change
+        // This can potentially cause someone to be able to approve/unapprove someone else's TXs.
         invariant!(
             self.smallet.owner_set_seqno == self.transaction.owner_set_seqno,
             OwnerSetChanged
         );
-        /// No point in approving/unapproving if the TX is already executed (duh)
+        // No point in approving/unapproving if the TX is already executed (duh)
         invariant!(self.transaction.executed_at == -1, AlreadyExecuted);
 
         Ok(())

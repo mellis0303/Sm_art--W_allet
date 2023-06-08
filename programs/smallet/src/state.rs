@@ -8,6 +8,7 @@ use vipers::prelude::*;
 
 #[account]
 #[derive(Default, Debug, PartialEq)]
+#[allow(missing_docs)]
 pub struct Smallet {
 	/// Base used to derive.
     pub base: Pubkey,
