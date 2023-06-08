@@ -19,15 +19,15 @@ export type PendingSmallet = {
 
 export type PendingSmalletTransaction = {
   /**
-   * Pubkey of the created transaction.
+   * Pubkey of the created [Transaction]
    */
   readonly transactionKey: PublicKey;
   /**
-   * Transaction to create the transaction.
+   * Transaction to create the [Transaction]
    */
   readonly tx: TransactionEnvelope;
   /**
-   * Index of the transaction.
+   * Index of the [Transaction]
    */
   readonly index: number;
 };
@@ -35,15 +35,15 @@ export type PendingSmalletTransaction = {
 export interface NewTransactionArgs {
   readonly proposer?: PublicKey;
   /**
-   * Payer of the created transaction.
+   * Payer of the created [Transaction]
    */
   readonly payer?: PublicKey;
   /**
-   * Instructions which compose the new transaction.
+   * Instructions which compose the new [Transaction]
    */
   readonly instructions: TransactionInstruction[];
   /**
-   * ETA of the new transaction.
+   * ETA of the new [Transaction]
    */
   readonly eta?: BN;
 }
